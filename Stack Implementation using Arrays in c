@@ -1,0 +1,98 @@
+#include <stdio.h>
+#define SIZE 10
+
+int stack[SIZE];
+int top=-1;
+
+int isEmpty()
+{
+   return top==-1;
+   printf("Stack is underflow");
+}
+int isFull()
+{
+   return top==SIZE-1;
+   printf("Stack is overflow");
+}
+
+void push(int element)
+{
+    if (isFull())
+    {
+        printf("Stack Overflow,\n %d can not be pushed into stack",element);
+    }
+    else
+    {
+        stack[++top]=element;
+        printf("Element sucessfully pushed! \n");
+    }
+}
+
+void pop()
+{
+    if (isEmpty())
+    {
+        printf("Stack Underflow, \n can't pop elements from the stack\n");
+    }
+    else
+    {
+        int popped=stack[top--];
+        printf("One element is popped from stack\n");
+    }
+}
+
+void display()
+{
+    if (isEmpty())
+    {
+        printf("Stack is empty!\n");
+    }
+    else
+    {
+        printf("Stack elemts:\n");
+        for (int i=0; i<=top; i++)
+        {
+            printf("%d\n",stack[i]);
+        }
+    }
+}
+
+int main()
+{
+    int choice, element;
+
+    while(1)
+    {
+        printf("STACK OPERATIONS\n");
+        printf("1.PUSH\n");
+        printf("2.POP\n");
+        printf("3.DISPLAY\n");
+        printf("4.EXIT\n");
+
+        printf("Enter your choice: \n");
+        scanf("%d",&choice);
+
+        switch(choice)
+        {
+            case 1:
+                printf("Enter a element to push: \n");
+                scanf("%d",&element);
+                push(element);
+                break;
+
+            case 2:
+                pop();
+                break;
+
+            case 3:
+                display();
+                break;
+
+            case 4:
+                return 0;
+
+            default:
+                printf("Wrong choice!!\n Choose again");
+        }
+    }
+}
